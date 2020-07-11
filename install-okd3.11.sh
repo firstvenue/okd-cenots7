@@ -9,12 +9,11 @@ SELINUX=disabled
 SELINUXTYPE=targeted
 EOF
 
-sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+sudo yum install -y yum-utils device-mapper-persistent-data lvm2 wget
 sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 sudo yum install -y  docker-ce docker-ce-cli containerd.io
 
 sudo usermod -aG docker $USER
-newgrp docker
 
 sudo mkdir /etc/docker /etc/containers
 
@@ -45,3 +44,8 @@ cd openshift-origin-client*/
 sudo cp oc kubectl /usr/local/bin/
 
 oc version
+
+oc cluster up
+
+oc cluster status
+
