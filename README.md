@@ -2,6 +2,9 @@
 
 install single node OKD 3.11 on CentOS 7
 
+https://computingforgeeks.com/setup-openshift-origin-local-cluster-on-centos/#ex1
+
+
 ## installation
 
 ```
