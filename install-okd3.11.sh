@@ -4,7 +4,7 @@ sudo yum -y update
 sudo yum -y remove firewalld
 
 sudo tee /etc/syconfig/syslinux<<EOF
-SELINUX=disabled
+SELINUX=permissive
 SELINUXTYPE=targeted
 EOF
 
