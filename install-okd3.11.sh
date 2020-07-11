@@ -1,7 +1,6 @@
 #!/bin/sh
 
 sudo yum -y update
-
 sudo yum -y remove firewalld
 
 sudo tee /etc/syconfig/syslinux<<EOF
