@@ -2,11 +2,34 @@
 
 sudo yum -y update
 
+sudo yum -y remove firewalld
+
+sudo tee /etc/syconfig/syslinux<<EOF
+SELINUX=disabled
+SELINUXTYPE=targeted
+EOF
+
 sudo yum install -y yum-utils device-mapper-persistent-data lvm2
 sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 sudo yum install -y  docker-ce docker-ce-cli containerd.io
 
+sudo usermod -aG docker $USER
+newgrp docker
+
 sudo mkdir /etc/docker /etc/containers
+
+sudo tee /etc/containers/registries.conf<<EOF
+[registries.insecure]
+registries = ['172.30.0.0/16']
+EOF
+
+sudo tee /etc/docker/daemon.json<<EOF
+{
+   "insecure-registries": [
+     "172.30.0.0/16"
+   ]
+}
+EOF
 
 sudo systemctl daemon-reload
 sudo systemctl restart docker
