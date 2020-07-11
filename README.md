@@ -14,8 +14,14 @@ sh -x install-okd3.11.sh
 oc cluter up
 ```
 
-## ;pgin
+## login
 
 ```
 oc login -u system:admin
+```
+
+## get status
+
+```
+oc cluster status
 ```
