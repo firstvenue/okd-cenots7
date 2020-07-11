@@ -14,4 +14,8 @@ sh -x install-okd3.11.sh
 oc cluter up
 ```
 
+## ;pgin
 
+```
+oc login -u system:admin
+```
