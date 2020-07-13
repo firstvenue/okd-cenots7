@@ -15,12 +15,10 @@ sudo yum install -y  docker-ce docker-ce-cli containerd.io
 sudo usermod -aG docker $USER
 
 sudo mkdir /etc/docker /etc/containers
-
 sudo tee /etc/containers/registries.conf<<EOF
 [registries.insecure]
 registries = ['172.30.0.0/16']
 EOF
-
 sudo tee /etc/docker/daemon.json<<EOF
 {
    "insecure-registries": [
@@ -31,7 +29,6 @@ EOF
 
 sudo systemctl daemon-reload
 sudo systemctl restart docker
-
 sudo systemctl enable docker
 
 echo "net.ipv4.ip_forward = 1" | sudo tee -a /etc/sysctl.conf
@@ -43,8 +40,5 @@ cd openshift-origin-client*/
 sudo cp oc kubectl /usr/local/bin/
 
 oc version
-
 oc cluster up
-
 oc cluster status
-
