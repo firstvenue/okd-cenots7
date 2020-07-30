@@ -14,7 +14,7 @@ sh -x install-okd3.11.sh
 ## start OKD cluster
 
 ```
-oc cluter up
+oc cluster up
 ```
 
 ## login
