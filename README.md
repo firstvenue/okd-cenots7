@@ -17,6 +17,13 @@ sh -x install-okd3.11.sh
 oc cluster up
 ```
 
+or
+
+```
+oc cluster up --public-hostname=server_public_dns_name
+```
+
+
 ## login
 
 ```
