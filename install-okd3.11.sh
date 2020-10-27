@@ -1,5 +1,5 @@
 #!/bin/sh
-
+PUBLIC_HOST_NAME_OR_IP=$1
 sudo yum -y update
 sudo yum -y remove firewalld
 
@@ -40,5 +40,13 @@ cd openshift-origin-client*/
 sudo cp oc kubectl /usr/local/bin/
 
 oc version
-oc cluster up
+
+
+if [ -z "$PUBLIC_HOST_NAME_OR_IP" ]
+then
+      oc cluster up
+else
+      oc cluster up --public-hostname=$PUBLIC_HOST_NAME_OR_IP
+fi
+
 oc cluster status
